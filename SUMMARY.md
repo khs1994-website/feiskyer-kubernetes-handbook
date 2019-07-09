@@ -160,6 +160,7 @@
 ## 实践案例
 
 - [实践案例](practice/index.md)
+  - [资源控制](practice/resource-management.md)
   - [高可用](practice/ha.md)
   - [调试](practice/debugging.md)
   - [端口映射](practice/portmap.md)
@@ -168,6 +169,8 @@
   - [HugePage](practice/hugepage.md)
   - [安全](practice/security.md)
   - [审计](practice/audit.md)
+  - [备份恢复](practice/backup.md)
+  - [证书轮换](practice/certificate-rotation.md)
   - [大规模集群](practice/big-cluster.md)
 - [大数据与机器学习](machine-learning/index.md)
   - [Spark](machine-learning/spark.md)

@@ -224,7 +224,17 @@ spec:
         accelerator: nvidia
 ```
 
+## Azure ServicePrincipal 过期
+
+默认情况下，Service Principal 的过期时间是 1 年，可以通过以下的命令延长过期时间：
+
+```sh
+az ad sp credential reset --name <clientId> --password <clientSecret> --years <newYears>
+```
+
 ## 参考文档
+
+* [AKS troubleshooting](https://docs.microsoft.com/en-us/azure/aks/troubleshooting)
 
 - [Azure subscription and service limits, quotas, and constraints](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)
 - [Virtual Kubelet - Missing Load Balancer IP addresses for services](https://github.com/virtual-kubelet/virtual-kubelet#missing-load-balancer-ip-addresses-for-services)

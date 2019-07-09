@@ -74,14 +74,14 @@ source <(kubectl completion zsh)
 `kubectl logs` 用于显示 pod 运行中，容器内程序输出到标准输出的内容。跟 docker 的 logs 命令类似。
 
 ```sh
-  # Return snapshot logs from pod nginx with only one container
-  kubectl logs nginx
+# Return snapshot logs from pod nginx with only one container
+kubectl logs nginx
 
-  # Return snapshot of previous terminated ruby container logs from pod web-1
-  kubectl logs -p -c ruby web-1
+# Return snapshot of previous terminated ruby container logs from pod web-1
+kubectl logs -p -c ruby web-1
 
-  # Begin streaming the logs of the ruby container in pod web-1
-  kubectl logs -f -c ruby web-1
+# Begin streaming the logs of the ruby container in pod web-1
+kubectl logs -f -c ruby web-1
 ```
 
 ## 连接到一个正在运行的容器
@@ -242,6 +242,37 @@ kubectl drain NODE [Options]
 ```sh
   # Reconcile rbac resources from a file
   kubectl auth reconcile -f my-rbac-rules.yaml
+```
+
+## 模拟其他用户
+
+kubectl 支持模拟其他用户或者组来进行集群管理操作，比如
+
+```sh
+kubectl drain mynode --as=superman --as-group=system:masters
+```
+
+这实际上就是在请求 Kubernetes API 时添加了如下的 HTTP HEADER：
+
+```sh
+Impersonate-User: superman
+Impersonate-Group: system:masters
+```
+
+## 查看事件（events）
+
+```sh
+# 查看所有事件
+kubectl get events --all-namespaces
+
+# 查看名为nginx对象的事件
+kubectl get events --field-selector involvedObject.name=nginx,involvedObject.namespace=default
+
+# 查看名为nginx的服务事件
+kubectl get events --field-selector involvedObject.name=nginx,involvedObject.namespace=default,involvedObject.kind=Service
+
+# 查看Pod的事件
+kubectl get events --field-selector involvedObject.name=nginx-85cb5867f-bs7pn,involvedObject.kind=Pod
 ```
 
 ## kubectl 插件

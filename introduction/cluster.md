@@ -43,7 +43,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 Play with Kubernetes 有个非常方便的功能：自动在页面上显示所有 NodePort 类型服务的端口，点击该端口即可访问对应的服务。
 
-详细使用方法可以参考 [Play-With-Kubernetes](https://github.com/feiskyer/kubernetes-handbook/blob/master/zh/appendix/play-with-k8s.md)。
+详细使用方法可以参考 [Play-With-Kubernetes](../appendix/play-with-k8s.md)。
 
 ### Katacoda playground
 
@@ -53,7 +53,7 @@ Play with Kubernetes 有个非常方便的功能：自动在页面上显示所�
 
 ```sh
 # 在 master node 上面运行
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 kubectl proxy --address='0.0.0.0' --port=8080 --accept-hosts='^*$'&
 ```
 
