@@ -357,6 +357,12 @@ Node 存储空间不足一般是容器镜像未及时清理导致的，比如短
 sudo docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:ro spotify/docker-gc
 ```
 
+你也可以 SSH 到 Node 上，执行下面的命令来查看占用空间最多的镜像（按镜像大小由大到小排序）：
+
+```sh
+sudo docker images --format '{{.Size}}\t{{.Repository}}:{{.Tag}}\t{{.ID}}' | sort -h -r | column -t
+```
+
 ## /sys/fs/cgroup 空间不足
 
 很多发行版默认的 fs.inotify.max_user_watches 太小，只有 8192，可以通过增大该配置解决。比如
@@ -364,6 +370,11 @@ sudo docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:r
 ```sh
 $ sudo sysctl fs.inotify.max_user_watches=524288
 ```
+
+除此之外，社区也存在 [no space left on /sys/fs/cgroup](https://github.com/kubernetes/kubernetes/issues/70324) 以及 [Kubelet CPU/Memory Usage linearly increases using CronJob](https://github.com/kubernetes/kubernetes/issues/64137) 的问题。临时解决方法有两种：
+
+* 参考 [这里的 Gist](https://gist.github.com/reaperes/34ed7b07344ccc61b9570c46a3b4e564) 通过定时任务定期清理 systemd cgroup
+* 或者，参考 [这里](https://github.com/derekrprice/k8s-hacks/blob/master/systemd-cgroup-gc.yaml) 通过 Daemonset 定期清理 systemd cgroup
 
 ## 大量 ConfigMap/Secret 导致Kubernetes缓慢
 
