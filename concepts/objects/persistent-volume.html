@@ -1,0 +1,3332 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>PersistentVolume · feiskyer-kubernetes-handbook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-solarizedlight.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="pod.html" />
+    
+    
+    <link rel="prev" href="node.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://docs.khs1994.com" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础入门</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../introduction/">
+            
+                <a href="../../introduction/">
+            
+                    
+                    Kubernetes 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../introduction/concepts.html">
+            
+                <a href="../../introduction/concepts.html">
+            
+                    
+                    Kubernetes 基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../introduction/101.html">
+            
+                <a href="../../introduction/101.html">
+            
+                    
+                    Kubernetes 101
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../introduction/201.html">
+            
+                <a href="../../introduction/201.html">
+            
+                    
+                    Kubernetes 201
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../introduction/cluster.html">
+            
+                <a href="../../introduction/cluster.html">
+            
+                    
+                    Kubernetes 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">核心原理</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    核心原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../architecture.html">
+            
+                <a href="../architecture.html">
+            
+                    
+                    架构原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../concepts.html">
+            
+                <a href="../concepts.html">
+            
+                    
+                    设计理念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../components/">
+            
+                <a href="../components/">
+            
+                    
+                    核心组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="../components/etcd.html">
+            
+                <a href="../components/etcd.html">
+            
+                    
+                    etcd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../components/apiserver.html">
+            
+                <a href="../components/apiserver.html">
+            
+                    
+                    kube-apiserver
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../components/scheduler.html">
+            
+                <a href="../components/scheduler.html">
+            
+                    
+                    kube-scheduler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.4" data-path="../components/controller-manager.html">
+            
+                <a href="../components/controller-manager.html">
+            
+                    
+                    kube-controller-manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.5" data-path="../components/kubelet.html">
+            
+                <a href="../components/kubelet.html">
+            
+                    
+                    kubelet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.6" data-path="../components/kube-proxy.html">
+            
+                <a href="../components/kube-proxy.html">
+            
+                    
+                    kube-proxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.7" data-path="../components/kube-dns.html">
+            
+                <a href="../components/kube-dns.html">
+            
+                    
+                    kube-dns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.8" data-path="../components/federation.html">
+            
+                <a href="../components/federation.html">
+            
+                    
+                    Federation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.9" data-path="../components/kubeadm.html">
+            
+                <a href="../components/kubeadm.html">
+            
+                    
+                    kubeadm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.10" data-path="../components/hyperkube.html">
+            
+                <a href="../components/hyperkube.html">
+            
+                    
+                    hyperkube
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.11" data-path="../components/kubectl.html">
+            
+                <a href="../components/kubectl.html">
+            
+                    
+                    kubectl
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    资源对象
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="autoscaling.html">
+            
+                <a href="autoscaling.html">
+            
+                    
+                    Autoscaling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="configmap.html">
+            
+                <a href="configmap.html">
+            
+                    
+                    ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="cronjob.html">
+            
+                <a href="cronjob.html">
+            
+                    
+                    CronJob
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="customresourcedefinition.html">
+            
+                <a href="customresourcedefinition.html">
+            
+                    
+                    CustomResourceDefinition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.5" data-path="daemonset.html">
+            
+                <a href="daemonset.html">
+            
+                    
+                    DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.6" data-path="deployment.html">
+            
+                <a href="deployment.html">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.7" data-path="ingress.html">
+            
+                <a href="ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.8" data-path="job.html">
+            
+                <a href="job.html">
+            
+                    
+                    Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.9" data-path="local-volume.html">
+            
+                <a href="local-volume.html">
+            
+                    
+                    LocalVolume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.10" data-path="namespace.html">
+            
+                <a href="namespace.html">
+            
+                    
+                    Namespace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.11" data-path="network-policy.html">
+            
+                <a href="network-policy.html">
+            
+                    
+                    NetworkPolicy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.12" data-path="node.html">
+            
+                <a href="node.html">
+            
+                    
+                    Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.5.13" data-path="persistent-volume.html">
+            
+                <a href="persistent-volume.html">
+            
+                    
+                    PersistentVolume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.14" data-path="pod.html">
+            
+                <a href="pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.15" data-path="podpreset.html">
+            
+                <a href="podpreset.html">
+            
+                    
+                    PodPreset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.16" data-path="replicaset.html">
+            
+                <a href="replicaset.html">
+            
+                    
+                    ReplicaSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.17" data-path="quota.html">
+            
+                <a href="quota.html">
+            
+                    
+                    Resource Quota
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.18" data-path="secret.html">
+            
+                <a href="secret.html">
+            
+                    
+                    Secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.19" data-path="security-context.html">
+            
+                <a href="security-context.html">
+            
+                    
+                    SecurityContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.20" data-path="service.html">
+            
+                <a href="service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.21" data-path="serviceaccount.html">
+            
+                <a href="serviceaccount.html">
+            
+                    
+                    ServiceAccount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.22" data-path="statefulset.html">
+            
+                <a href="statefulset.html">
+            
+                    
+                    StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.23" data-path="volume.html">
+            
+                <a href="volume.html">
+            
+                    
+                    Volume
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">部署配置</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../setup/">
+            
+                <a href="../../setup/">
+            
+                    
+                    部署指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../setup/kubectl.html">
+            
+                <a href="../../setup/kubectl.html">
+            
+                    
+                    kubectl 安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../setup/single.html">
+            
+                <a href="../../setup/single.html">
+            
+                    
+                    单机部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../../setup/feature-gates.html">
+            
+                <a href="../../setup/feature-gates.html">
+            
+                    
+                    特性开关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../../setup/kubernetes-configuration-best-practice.html">
+            
+                <a href="../../setup/kubernetes-configuration-best-practice.html">
+            
+                    
+                    最佳配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../../setup/upgrade.html">
+            
+                <a href="../../setup/upgrade.html">
+            
+                    
+                    版本支持
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../../setup/cluster/">
+            
+                <a href="../../setup/cluster/">
+            
+                    
+                    集群部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.7.1" data-path="../../setup/cluster/kubeadm.html">
+            
+                <a href="../../setup/cluster/kubeadm.html">
+            
+                    
+                    kubeadm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.2" data-path="../../setup/cluster/kops.html">
+            
+                <a href="../../setup/cluster/kops.html">
+            
+                    
+                    kops
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.3" data-path="../../setup/cluster/kubespray.html">
+            
+                <a href="../../setup/cluster/kubespray.html">
+            
+                    
+                    Kubespray
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.4" data-path="../../setup/cluster/azure.html">
+            
+                <a href="../../setup/cluster/azure.html">
+            
+                    
+                    Azure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.5" data-path="../../setup/cluster/windows.html">
+            
+                <a href="../../setup/cluster/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.6" data-path="../../setup/cluster/k8s-linuxkit.html">
+            
+                <a href="../../setup/cluster/k8s-linuxkit.html">
+            
+                    
+                    LinuxKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7.7" >
+            
+                <a target="_blank" href="https://github.com/gjmzj/kubeasz">
+            
+                    
+                    kubeasz
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../../setup/addon-list/">
+            
+                <a href="../../setup/addon-list/">
+            
+                    
+                    附加组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.8.1" data-path="../../setup/addon-list/addon-manager.html">
+            
+                <a href="../../setup/addon-list/addon-manager.html">
+            
+                    
+                    Addon-manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.2" data-path="../../setup/addon-list/kube-dns.html">
+            
+                <a href="../../setup/addon-list/kube-dns.html">
+            
+                    
+                    DNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.3" data-path="../../setup/addon-list/dashboard.html">
+            
+                <a href="../../setup/addon-list/dashboard.html">
+            
+                    
+                    Dashboard
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.4" data-path="../../setup/addon-list/monitor.html">
+            
+                <a href="../../setup/addon-list/monitor.html">
+            
+                    
+                    监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.5" data-path="../../setup/addon-list/logging.html">
+            
+                <a href="../../setup/addon-list/logging.html">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.6" data-path="../../setup/addon-list/metrics.html">
+            
+                <a href="../../setup/addon-list/metrics.html">
+            
+                    
+                    Metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.7" data-path="../../setup/addon-list/gpu.html">
+            
+                <a href="../../setup/addon-list/gpu.html">
+            
+                    
+                    GPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.8" data-path="../../setup/addon-list/cluster-autoscaler.html">
+            
+                <a href="../../setup/addon-list/cluster-autoscaler.html">
+            
+                    
+                    Cluster Autoscaler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8.9" data-path="../../setup/addon-list/ip-masq-agent.html">
+            
+                <a href="../../setup/addon-list/ip-masq-agent.html">
+            
+                    
+                    ip-masq-agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../../setup/k8s-hard-way/">
+            
+                <a href="../../setup/k8s-hard-way/">
+            
+                    
+                    Kubernetes-The-Hard-Way
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.9.1" data-path="../../setup/k8s-hard-way/01-prerequisites.html">
+            
+                <a href="../../setup/k8s-hard-way/01-prerequisites.html">
+            
+                    
+                    准备部署环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.2" data-path="../../setup/k8s-hard-way/02-client-tools.html">
+            
+                <a href="../../setup/k8s-hard-way/02-client-tools.html">
+            
+                    
+                    安装必要工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.3" data-path="../../setup/k8s-hard-way/03-compute-resources.html">
+            
+                <a href="../../setup/k8s-hard-way/03-compute-resources.html">
+            
+                    
+                    创建计算资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.4" data-path="../../setup/k8s-hard-way/04-certificate-authority.html">
+            
+                <a href="../../setup/k8s-hard-way/04-certificate-authority.html">
+            
+                    
+                    配置创建证书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.5" data-path="../../setup/k8s-hard-way/05-kubernetes-configuration-files.html">
+            
+                <a href="../../setup/k8s-hard-way/05-kubernetes-configuration-files.html">
+            
+                    
+                    配置生成配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.6" data-path="../../setup/k8s-hard-way/06-data-encryption-keys.html">
+            
+                <a href="../../setup/k8s-hard-way/06-data-encryption-keys.html">
+            
+                    
+                    配置生成密钥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.7" data-path="../../setup/k8s-hard-way/07-bootstrapping-etcd.html">
+            
+                <a href="../../setup/k8s-hard-way/07-bootstrapping-etcd.html">
+            
+                    
+                    部署 Etcd 群集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.8" data-path="../../setup/k8s-hard-way/08-bootstrapping-kubernetes-controllers.html">
+            
+                <a href="../../setup/k8s-hard-way/08-bootstrapping-kubernetes-controllers.html">
+            
+                    
+                    部署控制节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.9" data-path="../../setup/k8s-hard-way/09-bootstrapping-kubernetes-workers.html">
+            
+                <a href="../../setup/k8s-hard-way/09-bootstrapping-kubernetes-workers.html">
+            
+                    
+                    部署计算节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.10" data-path="../../setup/k8s-hard-way/10-configuring-kubectl.html">
+            
+                <a href="../../setup/k8s-hard-way/10-configuring-kubectl.html">
+            
+                    
+                    配置 Kubectl
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.11" data-path="../../setup/k8s-hard-way/11-pod-network-routes.html">
+            
+                <a href="../../setup/k8s-hard-way/11-pod-network-routes.html">
+            
+                    
+                    配置网络路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.12" data-path="../../setup/k8s-hard-way/12-dns-addon.html">
+            
+                <a href="../../setup/k8s-hard-way/12-dns-addon.html">
+            
+                    
+                    部署 DNS 扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.13" data-path="../../setup/k8s-hard-way/13-smoke-test.html">
+            
+                <a href="../../setup/k8s-hard-way/13-smoke-test.html">
+            
+                    
+                    烟雾测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9.14" data-path="../../setup/k8s-hard-way/14-cleanup.html">
+            
+                <a href="../../setup/k8s-hard-way/14-cleanup.html">
+            
+                    
+                    删除集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">插件扩展</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../extension/api/">
+            
+                <a href="../../extension/api/">
+            
+                    
+                    API 扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../../extension/api/aggregation.html">
+            
+                <a href="../../extension/api/aggregation.html">
+            
+                    
+                    Aggregation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../../extension/api/customresourcedefinition.html">
+            
+                <a href="../../extension/api/customresourcedefinition.html">
+            
+                    
+                    CustomResourceDefinition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../extension/auth/">
+            
+                <a href="../../extension/auth/">
+            
+                    
+                    访问控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../extension/auth/authentication.html">
+            
+                <a href="../../extension/auth/authentication.html">
+            
+                    
+                    认证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../extension/auth/rbac.html">
+            
+                <a href="../../extension/auth/rbac.html">
+            
+                    
+                    RBAC 授权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../extension/auth/admission.html">
+            
+                <a href="../../extension/auth/admission.html">
+            
+                    
+                    准入控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../extension/scheduler.html">
+            
+                <a href="../../extension/scheduler.html">
+            
+                    
+                    Scheduler 扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../extension/network/">
+            
+                <a href="../../extension/network/">
+            
+                    
+                    网络插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="../../extension/network/cni.html">
+            
+                <a href="../../extension/network/cni.html">
+            
+                    
+                    CNI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="../../extension/network/flannel.html">
+            
+                <a href="../../extension/network/flannel.html">
+            
+                    
+                    Flannel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="../../extension/network/calico.html">
+            
+                <a href="../../extension/network/calico.html">
+            
+                    
+                    Calico
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.4" data-path="../../extension/network/weave.html">
+            
+                <a href="../../extension/network/weave.html">
+            
+                    
+                    Weave
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.5" data-path="../../extension/network/cilium.html">
+            
+                <a href="../../extension/network/cilium.html">
+            
+                    
+                    Cilium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.6" data-path="../../extension/network/ovn-kubernetes.html">
+            
+                <a href="../../extension/network/ovn-kubernetes.html">
+            
+                    
+                    OVN
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.7" data-path="../../extension/network/contiv.html">
+            
+                <a href="../../extension/network/contiv.html">
+            
+                    
+                    Contiv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.8" data-path="../../extension/network/sriov.html">
+            
+                <a href="../../extension/network/sriov.html">
+            
+                    
+                    SR-IOV
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.9" data-path="../../extension/network/romana.html">
+            
+                <a href="../../extension/network/romana.html">
+            
+                    
+                    Romana
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.10" data-path="../../extension/network/opencontrail.html">
+            
+                <a href="../../extension/network/opencontrail.html">
+            
+                    
+                    OpenContrail
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.11" data-path="../../extension/network/kuryr.html">
+            
+                <a href="../../extension/network/kuryr.html">
+            
+                    
+                    Kuryr
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../../extension/cri/">
+            
+                <a href="../../extension/cri/">
+            
+                    
+                    运行时插件 CRI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.5.1" data-path="../../extension/cri/cri-tools.html">
+            
+                <a href="../../extension/cri/cri-tools.html">
+            
+                    
+                    CRI-tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5.2" data-path="../../extension/cri/frakti.html">
+            
+                <a href="../../extension/cri/frakti.html">
+            
+                    
+                    Frakti
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../../extension/volume/">
+            
+                <a href="../../extension/volume/">
+            
+                    
+                    存储插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.6.1" data-path="../../extension/volume/csi.html">
+            
+                <a href="../../extension/volume/csi.html">
+            
+                    
+                    容器存储接口 CSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.2" data-path="../../extension/volume/flex-volume.html">
+            
+                <a href="../../extension/volume/flex-volume.html">
+            
+                    
+                    FlexVolume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.3" data-path="../../extension/volume/glusterfs.html">
+            
+                <a href="../../extension/volume/glusterfs.html">
+            
+                    
+                    glusterfs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../../extension/network-policy.html">
+            
+                <a href="../../extension/network-policy.html">
+            
+                    
+                    网络策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../../extension/ingress/">
+            
+                <a href="../../extension/ingress/">
+            
+                    
+                    Ingress Controller
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.8.1" data-path="../../extension/ingress/ingress_letsencrypt.html">
+            
+                <a href="../../extension/ingress/ingress_letsencrypt.html">
+            
+                    
+                    Ingress + Letsencrypt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8.2" data-path="../../extension/ingress/minikube-ingress.html">
+            
+                <a href="../../extension/ingress/minikube-ingress.html">
+            
+                    
+                    minikube Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8.3" data-path="../../extension/ingress/service-discovery-and-load-balancing.html">
+            
+                <a href="../../extension/ingress/service-discovery-and-load-balancing.html">
+            
+                    
+                    Traefik Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8.4" data-path="../../extension/ingress/keepalived-vip.html">
+            
+                <a href="../../extension/ingress/keepalived-vip.html">
+            
+                    
+                    Keepalived-VIP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" data-path="../../extension/cloud-provider.html">
+            
+                <a href="../../extension/cloud-provider.html">
+            
+                    
+                    Cloud Provider 扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="../../extension/device.html">
+            
+                <a href="../../extension/device.html">
+            
+                    
+                    Device 插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">服务治理</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../apps/index/">
+            
+                <a href="../../apps/index/">
+            
+                    
+                    服务治理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../apps/index/patterns.html">
+            
+                <a href="../../apps/index/patterns.html">
+            
+                    
+                    一般准则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../apps/index/service-rolling-update.html">
+            
+                <a href="../../apps/index/service-rolling-update.html">
+            
+                    
+                    滚动升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../../apps/index/helm.html">
+            
+                <a href="../../apps/index/helm.html">
+            
+                    
+                    Helm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../../apps/index/operator.html">
+            
+                <a href="../../apps/index/operator.html">
+            
+                    
+                    Operator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../../apps/index/service-mesh.html">
+            
+                <a href="../../apps/index/service-mesh.html">
+            
+                    
+                    Service Mesh
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../../apps/index/linkerd.html">
+            
+                <a href="../../apps/index/linkerd.html">
+            
+                    
+                    Linkerd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../../apps/index/linkerd2.html">
+            
+                <a href="../../apps/index/linkerd2.html">
+            
+                    
+                    Linkerd2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../apps/istio/">
+            
+                <a href="../../apps/istio/">
+            
+                    
+                    Istio
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../apps/istio/istio-deploy.html">
+            
+                <a href="../../apps/istio/istio-deploy.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../apps/istio/istio-traffic-management.html">
+            
+                <a href="../../apps/istio/istio-traffic-management.html">
+            
+                    
+                    流量管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../apps/istio/istio-security.html">
+            
+                <a href="../../apps/istio/istio-security.html">
+            
+                    
+                    安全管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="../../apps/istio/istio-policy.html">
+            
+                <a href="../../apps/istio/istio-policy.html">
+            
+                    
+                    策略管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="../../apps/istio/istio-metrics.html">
+            
+                <a href="../../apps/istio/istio-metrics.html">
+            
+                    
+                    度量管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="../../apps/istio/istio-troubleshoot.html">
+            
+                <a href="../../apps/istio/istio-troubleshoot.html">
+            
+                    
+                    排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.7" data-path="../../apps/istio/istio-community.html">
+            
+                <a href="../../apps/istio/istio-community.html">
+            
+                    
+                    社区
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../apps/devops/">
+            
+                <a href="../../apps/devops/">
+            
+                    
+                    Devops
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.3.1" data-path="../../apps/devops/draft.html">
+            
+                <a href="../../apps/devops/draft.html">
+            
+                    
+                    Draft
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.2" data-path="../../apps/devops/jenkinsx.html">
+            
+                <a href="../../apps/devops/jenkinsx.html">
+            
+                    
+                    Jenkins X
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.3" data-path="../../apps/devops/spinnaker.html">
+            
+                <a href="../../apps/devops/spinnaker.html">
+            
+                    
+                    Spinnaker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.4" data-path="../../apps/devops/kompose.html">
+            
+                <a href="../../apps/devops/kompose.html">
+            
+                    
+                    Kompose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.5" data-path="../../apps/devops/skaffold.html">
+            
+                <a href="../../apps/devops/skaffold.html">
+            
+                    
+                    Skaffold
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.6" data-path="../../apps/devops/argo.html">
+            
+                <a href="../../apps/devops/argo.html">
+            
+                    
+                    Argo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3.7" data-path="../../apps/devops/flux.html">
+            
+                <a href="../../apps/devops/flux.html">
+            
+                    
+                    Flux GitOps
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">实践案例</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../practice/">
+            
+                <a href="../../practice/">
+            
+                    
+                    实践概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../practice/resource-management.html">
+            
+                <a href="../../practice/resource-management.html">
+            
+                    
+                    资源控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../practice/ha.html">
+            
+                <a href="../../practice/ha.html">
+            
+                    
+                    集群高可用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../../practice/app-ha.html">
+            
+                <a href="../../practice/app-ha.html">
+            
+                    
+                    应用高可用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../../practice/debugging.html">
+            
+                <a href="../../practice/debugging.html">
+            
+                    
+                    调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="../../practice/portmap.html">
+            
+                <a href="../../practice/portmap.html">
+            
+                    
+                    端口映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="../../practice/portforward.html">
+            
+                <a href="../../practice/portforward.html">
+            
+                    
+                    端口转发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="../../practice/user-management.html">
+            
+                <a href="../../practice/user-management.html">
+            
+                    
+                    用户管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="../../practice/gpu.html">
+            
+                <a href="../../practice/gpu.html">
+            
+                    
+                    GPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.10" data-path="../../practice/hugepage.html">
+            
+                <a href="../../practice/hugepage.html">
+            
+                    
+                    HugePage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.11" data-path="../../practice/security.html">
+            
+                <a href="../../practice/security.html">
+            
+                    
+                    安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.12" data-path="../../practice/audit.html">
+            
+                <a href="../../practice/audit.html">
+            
+                    
+                    审计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.13" data-path="../../practice/backup.html">
+            
+                <a href="../../practice/backup.html">
+            
+                    
+                    备份恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.14" data-path="../../practice/certificate-rotation.html">
+            
+                <a href="../../practice/certificate-rotation.html">
+            
+                    
+                    证书轮换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.15" data-path="../../practice/big-cluster.html">
+            
+                <a href="../../practice/big-cluster.html">
+            
+                    
+                    大规模集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.16" data-path="../../practice/introduction/">
+            
+                <a href="../../practice/introduction/">
+            
+                    
+                    大数据与机器学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.16.1" data-path="../../practice/introduction/spark.html">
+            
+                <a href="../../practice/introduction/spark.html">
+            
+                    
+                    Spark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.16.2" data-path="../../practice/introduction/tensorflow.html">
+            
+                <a href="../../practice/introduction/tensorflow.html">
+            
+                    
+                    Tensorflow
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.17" data-path="../../practice/serverless.html">
+            
+                <a href="../../practice/serverless.html">
+            
+                    
+                    Serverless
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">排错指南</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../troubleshooting/">
+            
+                <a href="../../troubleshooting/">
+            
+                    
+                    排错概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../../troubleshooting/cluster.html">
+            
+                <a href="../../troubleshooting/cluster.html">
+            
+                    
+                    集群排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../../troubleshooting/pod.html">
+            
+                <a href="../../troubleshooting/pod.html">
+            
+                    
+                    Pod 排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="../../troubleshooting/network.html">
+            
+                <a href="../../troubleshooting/network.html">
+            
+                    
+                    网络排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="../../troubleshooting/pv/">
+            
+                <a href="../../troubleshooting/pv/">
+            
+                    
+                    PV 排错
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.5.1" data-path="../../troubleshooting/pv/azuredisk.html">
+            
+                <a href="../../troubleshooting/pv/azuredisk.html">
+            
+                    
+                    AzureDisk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5.2" data-path="../../troubleshooting/pv/azurefile.html">
+            
+                <a href="../../troubleshooting/pv/azurefile.html">
+            
+                    
+                    AzureFile
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="../../troubleshooting/windows.html">
+            
+                <a href="../../troubleshooting/windows.html">
+            
+                    
+                    Windows 排错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="../../troubleshooting/cloud/">
+            
+                <a href="../../troubleshooting/cloud/">
+            
+                    
+                    云平台排错
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.7.1" data-path="../../troubleshooting/cloud/azure.html">
+            
+                <a href="../../troubleshooting/cloud/azure.html">
+            
+                    
+                    Azure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="../../troubleshooting/tools.html">
+            
+                <a href="../../troubleshooting/tools.html">
+            
+                    
+                    排错工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">社区贡献</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../community/">
+            
+                <a href="../../community/">
+            
+                    
+                    开发指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../../community/testing.html">
+            
+                <a href="../../community/testing.html">
+            
+                    
+                    单元测试和集成测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../../community/contribute.html">
+            
+                <a href="../../community/contribute.html">
+            
+                    
+                    社区贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">附录</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../../appendix/ecosystem.html">
+            
+                <a href="../../appendix/ecosystem.html">
+            
+                    
+                    生态圈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../../appendix/tutorial.html">
+            
+                <a href="../../appendix/tutorial.html">
+            
+                    
+                    学习资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../../appendix/mirrors.html">
+            
+                <a href="../../appendix/mirrors.html">
+            
+                    
+                    国内镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../../appendix/contributing.html">
+            
+                <a href="../../appendix/contributing.html">
+            
+                    
+                    如何贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="../../appendix/reference.html">
+            
+                <a href="../../appendix/reference.html">
+            
+                    
+                    参考文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >PersistentVolume</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="persistentvolume">PersistentVolume</h1>
+<p>PersistentVolume (PV) &#x548C; PersistentVolumeClaim (PVC) &#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x4FBF;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5377;&#xFF1A;PV &#x63D0;&#x4F9B;&#x7F51;&#x7EDC;&#x5B58;&#x50A8;&#x8D44;&#x6E90;&#xFF0C;&#x800C; PVC &#x8BF7;&#x6C42;&#x5B58;&#x50A8;&#x8D44;&#x6E90;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x8BBE;&#x7F6E;&#x6301;&#x4E45;&#x5316;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x5305;&#x62EC;&#x914D;&#x7F6E;&#x5E95;&#x5C42;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6216;&#x8005;&#x4E91;&#x6570;&#x636E;&#x5377;&#x3001;&#x521B;&#x5EFA;&#x6301;&#x4E45;&#x6027;&#x6570;&#x636E;&#x5377;&#x3001;&#x6700;&#x540E;&#x521B;&#x5EFA; PVC &#x6765;&#x5C06; Pod &#x8DDF;&#x6570;&#x636E;&#x5377;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;PV &#x548C; PVC &#x53EF;&#x4EE5;&#x5C06; pod &#x548C;&#x6570;&#x636E;&#x5377;&#x89E3;&#x8026;&#xFF0C;pod &#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x786E;&#x5207;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6216;&#x8005;&#x652F;&#x6301;&#x5B83;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5F15;&#x64CE;&#x3002;</p>
+<h2 id="volume-&#x751F;&#x547D;&#x5468;&#x671F;">Volume &#x751F;&#x547D;&#x5468;&#x671F;</h2>
+<p>Volume &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5305;&#x62EC; 5 &#x4E2A;&#x9636;&#x6BB5;</p>
+<ol>
+<li>Provisioning&#xFF0C;&#x5373; PV &#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x521B;&#x5EFA; PV&#xFF08;&#x9759;&#x6001;&#x65B9;&#x5F0F;&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; StorageClass &#x52A8;&#x6001;&#x521B;&#x5EFA;</li>
+<li>Binding&#xFF0C;&#x5C06; PV &#x5206;&#x914D;&#x7ED9; PVC</li>
+<li>Using&#xFF0C;Pod &#x901A;&#x8FC7; PVC &#x4F7F;&#x7528;&#x8BE5; Volume&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x51C6;&#x5165;&#x63A7;&#x5236; StorageObjectInUseProtection&#xFF08;1.9 &#x53CA;&#x4EE5;&#x524D;&#x7248;&#x672C;&#x4E3A; PVCProtection&#xFF09;&#x963B;&#x6B62;&#x5220;&#x9664;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684; PVC</li>
+<li>Releasing&#xFF0C;Pod &#x91CA;&#x653E; Volume &#x5E76;&#x5220;&#x9664; PVC</li>
+<li>Reclaiming&#xFF0C;&#x56DE;&#x6536; PV&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x7559; PV &#x4EE5;&#x4FBF;&#x4E0B;&#x6B21;&#x4F7F;&#x7528;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE;&#x4E91;&#x5B58;&#x50A8;&#x4E2D;&#x5220;&#x9664;</li>
+<li>Deleting&#xFF0C;&#x5220;&#x9664; PV &#x5E76;&#x4ECE;&#x4E91;&#x5B58;&#x50A8;&#x4E2D;&#x5220;&#x9664;&#x540E;&#x6BB5;&#x5B58;&#x50A8;</li>
+</ol>
+<p>&#x6839;&#x636E;&#x8FD9; 5 &#x4E2A;&#x9636;&#x6BB5;&#xFF0C;Volume &#x7684;&#x72B6;&#x6001;&#x6709;&#x4EE5;&#x4E0B; 4 &#x79CD;</p>
+<ul>
+<li>Available&#xFF1A;&#x53EF;&#x7528;</li>
+<li>Bound&#xFF1A;&#x5DF2;&#x7ECF;&#x5206;&#x914D;&#x7ED9; PVC</li>
+<li>Released&#xFF1A;PVC &#x89E3;&#x7ED1;&#x4F46;&#x8FD8;&#x672A;&#x6267;&#x884C;&#x56DE;&#x6536;&#x7B56;&#x7565;</li>
+<li>Failed&#xFF1A;&#x53D1;&#x751F;&#x9519;&#x8BEF;</li>
+</ul>
+<h2 id="api-&#x7248;&#x672C;&#x5BF9;&#x7167;&#x8868;">API &#x7248;&#x672C;&#x5BF9;&#x7167;&#x8868;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Kubernetes &#x7248;&#x672C;</th>
+<th style="text-align:left">PV/PVC &#x7248;&#x672C;</th>
+<th style="text-align:left">StorageClass &#x7248;&#x672C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">v1.5-v1.6</td>
+<td style="text-align:left">core/v1</td>
+<td style="text-align:left">storage.k8s.io/v1beta1</td>
+</tr>
+<tr>
+<td style="text-align:left">v1.7+</td>
+<td style="text-align:left">core/v1</td>
+<td style="text-align:left">storage.k8s.io/v1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pv">PV</h2>
+<p>PersistentVolume&#xFF08;PV&#xFF09;&#x662F;&#x96C6;&#x7FA4;&#x4E4B;&#x4E2D;&#x7684;&#x4E00;&#x5757;&#x7F51;&#x7EDC;&#x5B58;&#x50A8;&#x3002;&#x8DDF; Node &#x4E00;&#x6837;&#xFF0C;&#x4E5F;&#x662F;&#x96C6;&#x7FA4;&#x7684;&#x8D44;&#x6E90;&#x3002;PV &#x8DDF; Volume (&#x5377;) &#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x8FC7;&#x4F1A;&#x6709;&#x72EC;&#x7ACB;&#x4E8E; Pod &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;&#x6BD4;&#x5982;&#x4E00;&#x4E2A; NFS &#x7684; PV &#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E3A;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pv0003
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">capacity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">storage</span><span class="token punctuation">:</span> 5Gi
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Recycle
+  <span class="token key atrule">nfs</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /tmp
+    <span class="token key atrule">server</span><span class="token punctuation">:</span> 172.17.0.2
+</code></pre>
+<p>PV &#x7684;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#xFF08;accessModes&#xFF09;&#x6709;&#x4E09;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>ReadWriteOnce&#xFF08;RWO&#xFF09;&#xFF1A;&#x662F;&#x6700;&#x57FA;&#x672C;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#xFF0C;&#x4F46;&#x53EA;&#x652F;&#x6301;&#x88AB;&#x5355;&#x4E2A;&#x8282;&#x70B9;&#x6302;&#x8F7D;&#x3002;</li>
+<li>ReadOnlyMany&#xFF08;ROX&#xFF09;&#xFF1A;&#x53EF;&#x4EE5;&#x4EE5;&#x53EA;&#x8BFB;&#x7684;&#x65B9;&#x5F0F;&#x88AB;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x6302;&#x8F7D;&#x3002;</li>
+<li>ReadWriteMany&#xFF08;RWX&#xFF09;&#xFF1A;&#x8FD9;&#x79CD;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x4EE5;&#x8BFB;&#x5199;&#x7684;&#x65B9;&#x5F0F;&#x88AB;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x5171;&#x4EAB;&#x3002;&#x4E0D;&#x662F;&#x6BCF;&#x4E00;&#x79CD;&#x5B58;&#x50A8;&#x90FD;&#x652F;&#x6301;&#x8FD9;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x50CF;&#x5171;&#x4EAB;&#x65B9;&#x5F0F;&#xFF0C;&#x76EE;&#x524D;&#x652F;&#x6301;&#x7684;&#x8FD8;&#x6BD4;&#x8F83;&#x5C11;&#xFF0C;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#x7684;&#x662F; NFS&#x3002;&#x5728; PVC &#x7ED1;&#x5B9A; PV &#x65F6;&#x901A;&#x5E38;&#x6839;&#x636E;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#x6765;&#x7ED1;&#x5B9A;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x5B58;&#x50A8;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x5C31;&#x662F;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x3002;</li>
+</ul>
+<p>PV &#x7684;&#x56DE;&#x6536;&#x7B56;&#x7565;&#xFF08;persistentVolumeReclaimPolicy&#xFF0C;&#x5373; PVC &#x91CA;&#x653E;&#x5377;&#x7684;&#x65F6;&#x5019; PV &#x8BE5;&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#xFF09;&#x4E5F;&#x6709;&#x4E09;&#x79CD;</p>
+<ul>
+<li>Retain&#xFF0C;&#x4E0D;&#x6E05;&#x7406;, &#x4FDD;&#x7559; Volume&#xFF08;&#x9700;&#x8981;&#x624B;&#x52A8;&#x6E05;&#x7406;&#xFF09;</li>
+<li>Recycle&#xFF0C;&#x5220;&#x9664;&#x6570;&#x636E;&#xFF0C;&#x5373; <code>rm -rf /thevolume/*</code>&#xFF08;&#x53EA;&#x6709; NFS &#x548C; HostPath &#x652F;&#x6301;&#xFF09;</li>
+<li>Delete&#xFF0C;&#x5220;&#x9664;&#x5B58;&#x50A8;&#x8D44;&#x6E90;&#xFF0C;&#x6BD4;&#x5982;&#x5220;&#x9664; AWS EBS &#x5377;&#xFF08;&#x53EA;&#x6709; AWS EBS, GCE PD, Azure Disk &#x548C; Cinder &#x652F;&#x6301;&#xFF09;</li>
+</ul>
+<h2 id="storageclass">StorageClass</h2>
+<p>&#x4E0A;&#x9762;&#x901A;&#x8FC7;&#x624B;&#x52A8;&#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; NFS Volume&#xFF0C;&#x8FD9;&#x5728;&#x7BA1;&#x7406;&#x5F88;&#x591A; Volume &#x7684;&#x65F6;&#x5019;&#x4E0D;&#x592A;&#x65B9;&#x4FBF;&#x3002;Kubernetes &#x8FD8;&#x63D0;&#x4F9B;&#x4E86; <a href="https://kubernetes.io/docs/user-guide/persistent-volumes/#storageclasses" target="_blank">StorageClass</a> &#x6765;&#x52A8;&#x6001;&#x521B;&#x5EFA; PV&#xFF0C;&#x4E0D;&#x4EC5;&#x8282;&#x7701;&#x4E86;&#x7BA1;&#x7406;&#x5458;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5C01;&#x88C5;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5B58;&#x50A8;&#x4F9B; PVC &#x9009;&#x7528;&#x3002;</p>
+<p>StorageClass &#x5305;&#x62EC;&#x56DB;&#x4E2A;&#x90E8;&#x5206;</p>
+<ul>
+<li>provisioner&#xFF1A;&#x6307;&#x5B9A; Volume &#x63D2;&#x4EF6;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5305;&#x62EC;&#x5185;&#x7F6E;&#x63D2;&#x4EF6;&#xFF08;&#x5982; <code>kubernetes.io/glusterfs</code>&#xFF09;&#x548C;&#x5916;&#x90E8;&#x63D2;&#x4EF6;&#xFF08;&#x5982; <a href="https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/cephfs" target="_blank">external-storage</a> &#x63D0;&#x4F9B;&#x7684; <code>ceph.com/cephfs</code>&#xFF09;&#x3002;</li>
+<li>mountOptions&#xFF1A;&#x6307;&#x5B9A;&#x6302;&#x8F7D;&#x9009;&#x9879;&#xFF0C;&#x5F53; PV &#x4E0D;&#x652F;&#x6301;&#x6307;&#x5B9A;&#x7684;&#x9009;&#x9879;&#x65F6;&#x4F1A;&#x76F4;&#x63A5;&#x5931;&#x8D25;&#x3002;&#x6BD4;&#x5982; NFS &#x652F;&#x6301; <code>hard</code> &#x548C; <code>nfsvers=4.1</code> &#x7B49;&#x9009;&#x9879;&#x3002;</li>
+<li>parameters&#xFF1A;&#x6307;&#x5B9A; provisioner &#x7684;&#x9009;&#x9879;&#xFF0C;&#x6BD4;&#x5982; <code>kubernetes.io/aws-ebs</code> &#x652F;&#x6301; <code>type</code>&#x3001;<code>zone</code>&#x3001;<code>iopsPerGB</code> &#x7B49;&#x53C2;&#x6570;&#x3002;</li>
+<li>reclaimPolicy&#xFF1A;&#x6307;&#x5B9A;&#x56DE;&#x6536;&#x7B56;&#x7565;&#xFF0C;&#x540C; PV &#x7684;&#x56DE;&#x6536;&#x7B56;&#x7565;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x4F7F;&#x7528; PVC &#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>DefaultStorageClass</code> &#x51C6;&#x5165;&#x63A7;&#x5236;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4; StorageClass, &#x5373;&#x7ED9;&#x672A;&#x8BBE;&#x7F6E; storageClassName &#x7684; PVC &#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x9ED8;&#x8BA4;&#x7684; StorageClass&#x3002;&#x800C;&#x9ED8;&#x8BA4;&#x7684; StorageClass &#x5E26;&#x6709; annotation <code>storageclass.kubernetes.io/is-default-class=true</code>&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Volume Plugin</th>
+<th style="text-align:left">Internal Provisioner</th>
+<th style="text-align:left">Config Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AWSElasticBlockStore</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#aws" target="_blank">AWS</a></td>
+</tr>
+<tr>
+<td style="text-align:left">AzureFile</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file" target="_blank">Azure File</a></td>
+</tr>
+<tr>
+<td style="text-align:left">AzureDisk</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-disk" target="_blank">Azure Disk</a></td>
+</tr>
+<tr>
+<td style="text-align:left">CephFS</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">Cinder</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#openstack-cinder" target="_blank">OpenStack Cinder</a></td>
+</tr>
+<tr>
+<td style="text-align:left">FC</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">FlexVolume</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">Flocker</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">GCEPersistentDisk</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#gce" target="_blank">GCE</a></td>
+</tr>
+<tr>
+<td style="text-align:left">Glusterfs</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#glusterfs" target="_blank">Glusterfs</a></td>
+</tr>
+<tr>
+<td style="text-align:left">iSCSI</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">PhotonPersistentDisk</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">Quobyte</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#quobyte" target="_blank">Quobyte</a></td>
+</tr>
+<tr>
+<td style="text-align:left">NFS</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">RBD</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#ceph-rbd" target="_blank">Ceph RBD</a></td>
+</tr>
+<tr>
+<td style="text-align:left">VsphereVolume</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#vsphere" target="_blank">vSphere</a></td>
+</tr>
+<tr>
+<td style="text-align:left">PortworxVolume</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#portworx-volume" target="_blank">Portworx Volume</a></td>
+</tr>
+<tr>
+<td style="text-align:left">ScaleIO</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#scaleio" target="_blank">ScaleIO</a></td>
+</tr>
+<tr>
+<td style="text-align:left">StorageOS</td>
+<td style="text-align:left">&#x2713;</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#storageos" target="_blank">StorageOS</a></td>
+</tr>
+<tr>
+<td style="text-align:left">Local</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left"><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/#local" target="_blank">Local</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x4FEE;&#x6539;&#x9ED8;&#x8BA4;-storageclass">&#x4FEE;&#x6539;&#x9ED8;&#x8BA4; StorageClass</h4>
+<p>&#x53D6;&#x6D88;&#x539F;&#x6765;&#x7684;&#x9ED8;&#x8BA4; StorageClass</p>
+<pre class="language-"><code class="lang-bash">kubectl patch storageclass <span class="token operator">&lt;</span>default-class-name<span class="token operator">&gt;</span> -p <span class="token string">&apos;{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;false&quot;}}}&apos;</span>
+</code></pre>
+<p>&#x6807;&#x8BB0;&#x65B0;&#x7684;&#x9ED8;&#x8BA4; StorageClass</p>
+<pre class="language-"><code class="lang-bash">kubectl patch storageclass <span class="token operator">&lt;</span>your-class-name<span class="token operator">&gt;</span> -p <span class="token string">&apos;{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;true&quot;}}}&apos;</span>
+</code></pre>
+<h4 id="gce-&#x793A;&#x4F8B;">GCE &#x793A;&#x4F8B;</h4>
+<blockquote>
+<p>&#x5355;&#x4E2A; GCE &#x8282;&#x70B9;&#x6700;&#x5927;&#x652F;&#x6301;&#x6302;&#x8F7D; 16 &#x4E2A; Google Persistent Disk&#x3002;&#x5F00;&#x542F; <code>AttachVolumeLimit</code> &#x7279;&#x6027;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x8282;&#x70B9;&#x7684;&#x7C7B;&#x578B;&#x6700;&#x5927;&#x53EF;&#x4EE5;&#x6302;&#x8F7D; 128 &#x4E2A;&#x3002;</p>
+</blockquote>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> slow
+<span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/gce<span class="token punctuation">-</span>pd
+<span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> pd<span class="token punctuation">-</span>standard
+  <span class="token key atrule">zone</span><span class="token punctuation">:</span> us<span class="token punctuation">-</span>central1<span class="token punctuation">-</span>a
+</code></pre>
+<h4 id="glusterfs-&#x793A;&#x4F8B;">Glusterfs &#x793A;&#x4F8B;</h4>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> slow
+<span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/glusterfs
+<span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+  <span class="token key atrule">resturl</span><span class="token punctuation">:</span> <span class="token string">&quot;http://127.0.0.1:8081&quot;</span>
+  <span class="token key atrule">clusterid</span><span class="token punctuation">:</span> <span class="token string">&quot;630372ccdc720a92c681fb928f27b53f&quot;</span>
+  <span class="token key atrule">restauthenabled</span><span class="token punctuation">:</span> <span class="token string">&quot;true&quot;</span>
+  <span class="token key atrule">restuser</span><span class="token punctuation">:</span> <span class="token string">&quot;admin&quot;</span>
+  <span class="token key atrule">secretNamespace</span><span class="token punctuation">:</span> <span class="token string">&quot;default&quot;</span>
+  <span class="token key atrule">secretName</span><span class="token punctuation">:</span> <span class="token string">&quot;heketi-secret&quot;</span>
+  <span class="token key atrule">gidMin</span><span class="token punctuation">:</span> <span class="token string">&quot;40000&quot;</span>
+  <span class="token key atrule">gidMax</span><span class="token punctuation">:</span> <span class="token string">&quot;50000&quot;</span>
+  <span class="token key atrule">volumetype</span><span class="token punctuation">:</span> <span class="token string">&quot;replicate:3&quot;</span>
+</code></pre>
+<h4 id="openstack-cinder-&#x793A;&#x4F8B;">OpenStack Cinder &#x793A;&#x4F8B;</h4>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> gold
+<span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/cinder
+<span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> fast
+  <span class="token key atrule">availability</span><span class="token punctuation">:</span> nova
+</code></pre>
+<h4 id="ceph-rbd-&#x793A;&#x4F8B;">Ceph RBD &#x793A;&#x4F8B;</h4>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+  <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> fast
+  <span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/rbd
+  <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+    <span class="token key atrule">monitors</span><span class="token punctuation">:</span> 10.16.153.105<span class="token punctuation">:</span><span class="token number">6789</span>
+    <span class="token key atrule">adminId</span><span class="token punctuation">:</span> kube
+    <span class="token key atrule">adminSecretName</span><span class="token punctuation">:</span> ceph<span class="token punctuation">-</span>secret
+    <span class="token key atrule">adminSecretNamespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+    <span class="token key atrule">pool</span><span class="token punctuation">:</span> kube
+    <span class="token key atrule">userId</span><span class="token punctuation">:</span> kube
+    <span class="token key atrule">userSecretName</span><span class="token punctuation">:</span> ceph<span class="token punctuation">-</span>secret<span class="token punctuation">-</span>user
+</code></pre>
+<h3 id="local-volume">Local Volume</h3>
+<p>Local Volume &#x5141;&#x8BB8;&#x5C06; Node &#x672C;&#x5730;&#x7684;&#x78C1;&#x76D8;&#x3001;&#x5206;&#x533A;&#x6216;&#x8005;&#x76EE;&#x5F55;&#x4F5C;&#x4E3A;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#x4F7F;&#x7528;&#x3002;&#x6CE8;&#x610F;&#xFF0C;Local Volume &#x4E0D;&#x652F;&#x6301;&#x52A8;&#x6001;&#x521B;&#x5EFA;&#xFF0C;&#x4F7F;&#x7528;&#x524D;&#x9700;&#x8981;&#x9884;&#x5148;&#x521B;&#x5EFA;&#x597D; PV&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> example<span class="token punctuation">-</span>pv
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">capacity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">storage</span><span class="token punctuation">:</span> 100Gi
+  <span class="token comment"># volumeMode field requires BlockVolume Alpha feature gate to be enabled.</span>
+  <span class="token key atrule">volumeMode</span><span class="token punctuation">:</span> Filesystem
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Delete
+  <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> local<span class="token punctuation">-</span>storage
+  <span class="token key atrule">local</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /mnt/disks/ssd1
+  <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">required</span><span class="token punctuation">:</span>
+      <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> kubernetes.io/hostname
+          <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+          <span class="token key atrule">values</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> example<span class="token punctuation">-</span>node
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> local<span class="token punctuation">-</span>storage
+<span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/no<span class="token punctuation">-</span>provisioner
+<span class="token key atrule">volumeBindingMode</span><span class="token punctuation">:</span> WaitForFirstConsumer
+</code></pre>
+<p>&#x63A8;&#x8350;&#x914D;&#x7F6E;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x5F3A; IO &#x9694;&#x79BB;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x6574;&#x5757;&#x78C1;&#x76D8;&#x4F5C;&#x4E3A; Volume</li>
+<li>&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x5BB9;&#x91CF;&#x9694;&#x79BB;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x5206;&#x533A;&#x4F5C;&#x4E3A; Volume</li>
+<li>&#x907F;&#x514D;&#x5728;&#x96C6;&#x7FA4;&#x4E2D;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x540C;&#x540D;&#x7684; Node&#xFF08;&#x65E0;&#x6CD5;&#x907F;&#x514D;&#x65F6;&#x9700;&#x8981;&#x5148;&#x5220;&#x9664;&#x901A;&#x8FC7; Affinity &#x5F15;&#x7528;&#x8BE5; Node &#x7684; PV&#xFF09;</li>
+<li>&#x5BF9;&#x4E8E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x578B;&#x7684;&#x672C;&#x5730;&#x5B58;&#x50A8;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528; UUID &#xFF08;&#x5982; <code>ls -l /dev/disk/by-uuid</code>&#xFF09;&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x6302;&#x8F7D;&#x70B9;</li>
+<li>&#x5BF9;&#x4E8E;&#x65E0;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5757;&#x5B58;&#x50A8;&#xFF0C;&#x63A8;&#x8350;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x552F;&#x4E00; ID &#x4F5C;&#x8F6F;&#x94FE;&#x63A5;&#xFF08;&#x5982; <code>/dev/dis/by-id</code>&#xFF09;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1; Volume &#x540D;&#x5B57;&#x552F;&#x4E00;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x4E0E;&#x5176;&#x4ED6; Node &#x4E0A;&#x9762;&#x7684;&#x540C;&#x540D; Volume &#x6DF7;&#x6DC6;</li>
+</ul>
+<h2 id="pvc">PVC</h2>
+<p>PV &#x662F;&#x5B58;&#x50A8;&#x8D44;&#x6E90;&#xFF0C;&#x800C; PersistentVolumeClaim (PVC) &#x662F;&#x5BF9; PV &#x7684;&#x8BF7;&#x6C42;&#x3002;PVC &#x8DDF; Pod &#x7C7B;&#x4F3C;&#xFF1A;Pod &#x6D88;&#x8D39; Node &#x8D44;&#x6E90;&#xFF0C;&#x800C; PVC &#x6D88;&#x8D39; PV &#x8D44;&#x6E90;&#xFF1B;Pod &#x80FD;&#x591F;&#x8BF7;&#x6C42; CPU &#x548C;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#xFF0C;&#x800C; PVC &#x8BF7;&#x6C42;&#x7279;&#x5B9A;&#x5927;&#x5C0F;&#x548C;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x7684;&#x6570;&#x636E;&#x5377;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> myclaim
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+    <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+      <span class="token key atrule">storage</span><span class="token punctuation">:</span> 8Gi
+  <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> slow
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">release</span><span class="token punctuation">:</span> <span class="token string">&quot;stable&quot;</span>
+    <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token punctuation">{</span><span class="token key atrule">key</span><span class="token punctuation">:</span> environment<span class="token punctuation">,</span> <span class="token key atrule">operator</span><span class="token punctuation">:</span> In<span class="token punctuation">,</span> <span class="token key atrule">values</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>dev<span class="token punctuation">]</span><span class="token punctuation">}</span>
+</code></pre>
+<p>PVC &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6302;&#x8F7D;&#x5230; Pod &#x4E2D;&#xFF1A;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> mypod
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myfrontend
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> dockerfile/nginx
+      <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> <span class="token string">&quot;/var/www/html&quot;</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> mypd
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mypd
+      <span class="token key atrule">persistentVolumeClaim</span><span class="token punctuation">:</span>
+        <span class="token key atrule">claimName</span><span class="token punctuation">:</span> myclaim
+</code></pre>
+<h2 id="&#x6269;&#x5C55;-pv-&#x7A7A;&#x95F4;">&#x6269;&#x5C55; PV &#x7A7A;&#x95F4;</h2>
+<blockquote>
+<p>ExpandPersistentVolumes &#x5728; v1.8 &#x5F00;&#x59CB; Alpha&#xFF0C;v1.11 &#x5347;&#x7EA7;&#x4E3A; Beta &#x7248;&#x3002;</p>
+</blockquote>
+<p>v1.8 &#x5F00;&#x59CB;&#x652F;&#x6301;&#x6269;&#x5C55; PV &#x7A7A;&#x95F4;&#xFF0C;&#x652F;&#x6301;&#x5728;&#x4E0D;&#x4E22;&#x5931;&#x6570;&#x636E;&#x548C;&#x91CD;&#x542F;&#x5BB9;&#x5668;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6269;&#x5C55; PV &#x7684;&#x5927;&#x5C0F;&#x3002;&#x6CE8;&#x610F;&#xFF0C; <strong>&#x5F53;&#x524D;&#x7684;&#x5B9E;&#x73B0;&#x4EC5;&#x652F;&#x6301;&#x4E0D;&#x9700;&#x8981;&#x8C03;&#x6574;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5927;&#x5C0F;&#xFF08;XFS&#x3001;Ext3&#x3001;Ext4&#xFF09;&#x7684; PV&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x652F;&#x6301;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x5B58;&#x50A8;&#x63D2;&#x4EF6;</strong> &#xFF1A;</p>
+<ul>
+<li>AzureDisk</li>
+<li>AzureFile</li>
+<li>gcePersistentDisk</li>
+<li>awsElasticBlockStore</li>
+<li>Cinder</li>
+<li>glusterfs</li>
+<li>rbd</li>
+<li>Portworx</li>
+</ul>
+<p>&#x5F00;&#x542F;&#x6269;&#x5C55; PV &#x7A7A;&#x95F4;&#x7684;&#x529F;&#x80FD;&#x9700;&#x8981;&#x914D;&#x7F6E;</p>
+<ul>
+<li>&#x5F00;&#x542F; <code>ExpandPersistentVolumes</code> &#x529F;&#x80FD;&#xFF0C;&#x5373;&#x914D;&#x7F6E; <code>--feature-gates=ExpandPersistentVolumes=true</code></li>
+<li>&#x5F00;&#x542F;&#x51C6;&#x5165;&#x63A7;&#x5236;&#x63D2;&#x4EF6; <code>PersistentVolumeClaimResize</code>&#xFF0C;&#x5B83;&#x53EA;&#x5141;&#x8BB8;&#x6269;&#x5C55;&#x660E;&#x786E;&#x914D;&#x7F6E; <code>allowVolumeExpansion=true</code> &#x7684; StorageClass&#xFF0C;&#x6BD4;&#x5982;</li>
+</ul>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> gluster<span class="token punctuation">-</span>vol<span class="token punctuation">-</span>default
+<span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/glusterfs
+<span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+  <span class="token key atrule">resturl</span><span class="token punctuation">:</span> <span class="token string">&quot;http://192.168.10.100:8080&quot;</span>
+  <span class="token key atrule">restuser</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+  <span class="token key atrule">secretNamespace</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+  <span class="token key atrule">secretName</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+<span class="token key atrule">allowVolumeExpansion</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x7528;&#x6237;&#x5C31;&#x53EF;&#x4EE5;&#x4FEE;&#x6539; PVC &#x4E2D;&#x8BF7;&#x6C42;&#x5B58;&#x50A8;&#x7684;&#x5927;&#x5C0F;&#xFF08;&#x5982;&#x901A;&#x8FC7; <code>kubectl edit</code> &#x547D;&#x4EE4;&#xFF09;&#x8BF7;&#x6C42;&#x66F4;&#x5927;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002;</p>
+<h2 id="&#x5757;&#x5B58;&#x50A8;&#xFF08;raw-block-volume&#xFF09;">&#x5757;&#x5B58;&#x50A8;&#xFF08;Raw Block Volume&#xFF09;</h2>
+<p>Kubernetes v1.9 &#x65B0;&#x589E;&#x4E86; Alpha &#x7248;&#x7684; Raw Block Volume&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E; <code>volumeMode: Block</code>&#xFF08;&#x53EF;&#x9009;&#x9879;&#x4E3A; <code>Filesystem</code> &#x548C; <code>Block</code>&#xFF09;&#x6765;&#x4F7F;&#x7528;&#x5757;&#x5B58;&#x50A8;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4F7F;&#x7528;&#x524D;&#x9700;&#x8981;&#x4E3A; kube-apiserver&#x3001;kube-controller-manager &#x548C; kubelet &#x5F00;&#x542F; <code>BlockVolume</code> &#x7279;&#x6027;&#xFF0C;&#x5373;&#x6DFB;&#x52A0;&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879; <code>--feature-gates=BlockVolume=true,...</code>&#x3002;</p>
+</blockquote>
+<p>&#x652F;&#x6301;&#x5757;&#x5B58;&#x50A8;&#x7684; PV &#x63D2;&#x4EF6;&#x5305;&#x62EC;</p>
+<ul>
+<li>Local Volume</li>
+<li>fc</li>
+<li>iSCSI</li>
+<li>Ceph RBD</li>
+<li>AWS EBS</li>
+<li>GCE PD</li>
+<li>AzureDisk</li>
+<li>Cinder</li>
+</ul>
+<p>&#x4F7F;&#x7528;&#x793A;&#x4F8B;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token comment"># Persistent Volumes using a Raw Block Volume</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> block<span class="token punctuation">-</span>pv
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">capacity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10Gi
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">volumeMode</span><span class="token punctuation">:</span> Block
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Retain
+  <span class="token key atrule">fc</span><span class="token punctuation">:</span>
+    <span class="token key atrule">targetWWNs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;50060e801049cfd1&quot;</span><span class="token punctuation">]</span>
+    <span class="token key atrule">lun</span><span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token key atrule">readOnly</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token punctuation">---</span>
+<span class="token comment"># Persistent Volume Claim requesting a Raw Block Volume</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> block<span class="token punctuation">-</span>pvc
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">volumeMode</span><span class="token punctuation">:</span> Block
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+    <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+      <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10Gi
+<span class="token punctuation">---</span>
+<span class="token comment"># Pod specification adding Raw Block Device path in container</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>with<span class="token punctuation">-</span>block<span class="token punctuation">-</span>volume
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token comment"># apparmor should be unconfied for mounting the device inside container.</span>
+    <span class="token key atrule">container.apparmor.security.beta.kubernetes.io/fc-container</span><span class="token punctuation">:</span> unconfined
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> fc<span class="token punctuation">-</span>container
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> fedora<span class="token punctuation">:</span><span class="token number">26</span>
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/bin/sh&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;-c&quot;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">args</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;tail -f /dev/null&quot;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+        <span class="token key atrule">capabilities</span><span class="token punctuation">:</span>
+          <span class="token comment"># CAP_SYS_ADMIN is required for mount() syscall.</span>
+          <span class="token key atrule">add</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;SYS_ADMIN&quot;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">volumeDevices</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> data
+          <span class="token key atrule">devicePath</span><span class="token punctuation">:</span> /dev/xvda
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> data
+      <span class="token key atrule">persistentVolumeClaim</span><span class="token punctuation">:</span>
+        <span class="token key atrule">claimName</span><span class="token punctuation">:</span> block<span class="token punctuation">-</span>pvc
+</code></pre>
+<h2 id="storageobjectinuseprotection">StorageObjectInUseProtection</h2>
+<blockquote>
+<p>&#x51C6;&#x5165;&#x63A7;&#x5236; StorageObjectInUseProtection &#x5728; v1.11 &#x7248;&#x672C; GA&#x3002;</p>
+</blockquote>
+<p>&#x5F53;&#x5F00;&#x542F;&#x51C6;&#x5165;&#x63A7;&#x5236; StorageObjectInUseProtection&#xFF08;<code>--admission-control=StorageObjectInUseProtection</code>&#xFF09;&#x65F6;&#xFF0C;&#x5220;&#x9664;&#x4F7F;&#x7528;&#x4E2D;&#x7684; PV &#x548C; PVC &#x540E;&#xFF0C;&#x5B83;&#x4EEC;&#x4F1A;&#x7B49;&#x5F85;&#x4F7F;&#x7528;&#x8005;&#x5220;&#x9664;&#x540E;&#x624D;&#x5220;&#x9664;&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x4E4B;&#x524D;&#x7684;&#x7ACB;&#x5373;&#x5220;&#x9664;&#xFF09;&#x3002;&#x800C;&#x5728;&#x4F7F;&#x7528;&#x8005;&#x5220;&#x9664;&#x4E4B;&#x524D;&#xFF0C;&#x5B83;&#x4EEC;&#x4F1A;&#x4E00;&#x76F4;&#x5904;&#x4E8E; Terminating &#x72B6;&#x6001;&#x3002;</p>
+<h2 id="&#x62D3;&#x6251;&#x611F;&#x77E5;&#x52A8;&#x6001;&#x8C03;&#x5EA6;">&#x62D3;&#x6251;&#x611F;&#x77E5;&#x52A8;&#x6001;&#x8C03;&#x5EA6;</h2>
+<p>&#x62D3;&#x6251;&#x611F;&#x77E5;&#x52A8;&#x6001;&#x5B58;&#x50A8;&#x5377;&#x8C03;&#x5EA6;&#xFF08;topology-aware dynamic provisioning&#xFF09;&#x662F; v1.12 &#x7248;&#x672C;&#x7684;&#x4E00;&#x4E2A; Beta &#x7279;&#x6027;&#xFF0C;&#x7528;&#x6765;&#x652F;&#x6301;&#x5728;&#x591A;&#x53EF;&#x7528;&#x533A;&#x96C6;&#x7FA4;&#x4E2D;&#x52A8;&#x6001;&#x521B;&#x5EFA;&#x548C;&#x8C03;&#x5EA6;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#x5377;&#x3002;&#x76EE;&#x524D;&#x7684;&#x5B9E;&#x73B0;&#x652F;&#x6301;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x5B58;&#x50A8;&#xFF1A;</p>
+<ul>
+<li>AWS EBS</li>
+<li>Azure Disk</li>
+<li>GCE PD (including Regional PD)</li>
+<li>CSI (alpha) - currently only the GCE PD CSI driver has implemented topology support</li>
+</ul>
+<p>&#x4F7F;&#x7528;&#x793A;&#x4F8B;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token comment"># set WaitForFirstConsumer in storage class</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> StorageClass
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> storage.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> topology<span class="token punctuation">-</span>aware<span class="token punctuation">-</span>standard
+<span class="token key atrule">provisioner</span><span class="token punctuation">:</span> kubernetes.io/gce<span class="token punctuation">-</span>pd
+<span class="token key atrule">volumeBindingMode</span><span class="token punctuation">:</span> WaitForFirstConsumer
+<span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> pd<span class="token punctuation">-</span>standard
+
+<span class="token comment"># Refer storage class</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> StatefulSet
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>   
+  <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> <span class="token string">&quot;nginx&quot;</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+        <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+            <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> failure<span class="token punctuation">-</span>domain.beta.kubernetes.io/zone
+                <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+                <span class="token key atrule">values</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> us<span class="token punctuation">-</span>central1<span class="token punctuation">-</span>a
+                <span class="token punctuation">-</span> us<span class="token punctuation">-</span>central1<span class="token punctuation">-</span>f
+        <span class="token key atrule">podAntiAffinity</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> <span class="token key atrule">labelSelector</span><span class="token punctuation">:</span>
+              <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> app
+                <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+                <span class="token key atrule">values</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> nginx
+            <span class="token key atrule">topologyKey</span><span class="token punctuation">:</span> failure<span class="token punctuation">-</span>domain.beta.kubernetes.io/zone
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> gcr.io/google_containers/nginx<span class="token punctuation">-</span>slim<span class="token punctuation">:</span><span class="token number">0.8</span>
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+        <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> www
+          <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /usr/share/nginx/html
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> logs
+          <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /logs
+ <span class="token key atrule">volumeClaimTemplates</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> www
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">accessModes</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">&quot;ReadWriteOnce&quot;</span> <span class="token punctuation">]</span>
+      <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> topology<span class="token punctuation">-</span>aware<span class="token punctuation">-</span>standard
+      <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+        <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+          <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10Gi
+  <span class="token punctuation">-</span> <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> logs
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">accessModes</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">&quot;ReadWriteOnce&quot;</span> <span class="token punctuation">]</span>
+      <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> topology<span class="token punctuation">-</span>aware<span class="token punctuation">-</span>standard
+      <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+        <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+          <span class="token key atrule">storage</span><span class="token punctuation">:</span> 1Gi
+</code></pre>
+<p>&#x7136;&#x540E;&#x67E5;&#x770B; PV&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5B83;&#x4EEC;&#x521B;&#x5EFA;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x53EF;&#x7528;&#x533A;&#x5185;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get <span class="token function">pv</span> -o<span class="token operator">=</span>jsonpath<span class="token operator">=</span><span class="token string">&apos;{range .items[*]}{.spec.claimRef.name}{&quot;<span class="token entity" title="\t">\t</span>&quot;}{.metadata.labels.failure\-domain\.beta\.kubernetes\.io/zone}{&quot;<span class="token entity" title="\n">\n</span>&quot;}{end}&apos;</span>
+www-web-0       us-central1-f
+logs-web-0      us-central1-f
+www-web-1       us-central1-a
+logs-web-1      us-central1-a
+</code></pre>
+<h2 id="&#x5B58;&#x50A8;&#x5FEB;&#x7167;">&#x5B58;&#x50A8;&#x5FEB;&#x7167;</h2>
+<p>&#x5B58;&#x50A8;&#x5FEB;&#x7167;&#x662F; v1.12 &#x65B0;&#x589E;&#x7684; Alpha &#x7279;&#x6027;&#xFF0C;&#x7528;&#x6765;&#x652F;&#x6301;&#x7ED9;&#x5B58;&#x50A8;&#x5377;&#x521B;&#x5EFA;&#x5FEB;&#x7167;&#x3002;&#x652F;&#x6301;&#x7684;&#x63D2;&#x4EF6;&#x5305;&#x62EC;</p>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/gcp-compute-persistent-disk-csi-driver" target="_blank">GCE Persistent Disk CSI Driver</a></li>
+<li><a href="https://github.com/opensds/nbp/tree/master/csi/server" target="_blank">OpenSDS CSI Driver</a></li>
+<li><a href="https://github.com/ceph/ceph-csi/tree/master/pkg/rbd" target="_blank">Ceph RBD CSI Driver</a></li>
+<li><a href="https://github.com/libopenstorage/openstorage/tree/master/csi" target="_blank">Portworx CSI Driver</a></li>
+</ul>
+<p><img src="../../.gitbook/assets/image-20181014215558480.png" alt="image-20181014215558480"></p>
+<p>&#x5728;&#x4F7F;&#x7528;&#x524D;&#x9700;&#x8981;&#x5F00;&#x542F;&#x7279;&#x6027;&#x5F00;&#x5173; VolumeSnapshotDataSource&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token comment"># create snapshot</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> snapshot.storage.k8s.io/v1alpha1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> VolumeSnapshot
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> new<span class="token punctuation">-</span>snapshot<span class="token punctuation">-</span>demo
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>namespace
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">snapshotClassName</span><span class="token punctuation">:</span> csi<span class="token punctuation">-</span>snapclass
+  <span class="token key atrule">source</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> mypvc
+    <span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
+
+<span class="token comment"># import from snapshot</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> snapshot.storage.k8s.io/v1alpha1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> VolumeSnapshotContent
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> static<span class="token punctuation">-</span>snapshot<span class="token punctuation">-</span>content
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">csiVolumeSnapshotSource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> com.example.csi<span class="token punctuation">-</span>driver
+    <span class="token key atrule">snapshotHandle</span><span class="token punctuation">:</span> snapshotcontent<span class="token punctuation">-</span>example<span class="token punctuation">-</span>id
+  <span class="token key atrule">volumeSnapshotRef</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kind</span><span class="token punctuation">:</span> VolumeSnapshot
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> static<span class="token punctuation">-</span>snapshot<span class="token punctuation">-</span>demo
+    <span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>namespace
+
+<span class="token comment"># provision volume from snapshot</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pvc<span class="token punctuation">-</span>restore
+  <span class="token key atrule">Namespace</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>namespace
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> csi<span class="token punctuation">-</span>storageclass
+  <span class="token key atrule">dataSource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> new<span class="token punctuation">-</span>snapshot<span class="token punctuation">-</span>demo
+    <span class="token key atrule">kind</span><span class="token punctuation">:</span> VolumeSnapshot
+    <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> snapshot.storage.k8s.io
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+    <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+      <span class="token key atrule">storage</span><span class="token punctuation">:</span> 1Gi
+</code></pre>
+<h2 id="&#x53C2;&#x8003;&#x6587;&#x6863;">&#x53C2;&#x8003;&#x6587;&#x6863;</h2>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">Kubernetes Persistent Volumes</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/" target="_blank">Kubernetes Storage Classes</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/" target="_blank">Dynamic Volume Provisioning</a></li>
+<li><a href="https://kubernetes-csi.github.io/docs/" target="_blank">Kubernetes CSI Documentation</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/volume-snapshots/" target="_blank">Volume Snapshots Documentation</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="node.html" class="navigation navigation-prev " aria-label="Previous page: Node">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="pod.html" class="navigation navigation-next " aria-label="Next page: Pod">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"PersistentVolume","level":"3.5.13","depth":2,"next":{"title":"Pod","level":"3.5.14","depth":2,"path":"concepts/objects/pod.md","ref":"concepts/objects/pod.md","articles":[]},"previous":{"title":"Node","level":"3.5.12","depth":2,"path":"concepts/objects/node.md","ref":"concepts/objects/node.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-highlight","-livereload","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-solarizedlight.css"]},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"feiskyer-kubernetes-handbook","language":"zh-hans","links":{"sidebar":{"Home":"https://docs.khs1994.com"}},"gitbook":"*"},"file":{"path":"concepts/objects/persistent-volume.md","mtime":"2021-04-18T00:50:42.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-18T00:52:45.379Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
